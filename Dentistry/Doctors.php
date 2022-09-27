@@ -55,7 +55,7 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
                             <h9><?php echo "{$result['name']}"; ?></h9>
                             <p><?php echo "{$result['speciality']}"; ?></p>
                             <p>Опыт работы: <?php echo "{$result['experience']}"; ?> лет</p>
-                            <p>Телефон: <?php echo "{$result['phone']}"; ?></p>
+                           
                         </div>
                         <div class="doc_photo">
                             <img src="<?php echo $result['photo']; ?>" width="250" height="250px"/>
