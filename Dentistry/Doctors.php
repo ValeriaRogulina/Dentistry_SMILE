@@ -49,18 +49,16 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
             </div>
                 <div class="doctors">
                     <?php
-                    $doctors=get_doctors();
-                        foreach ($doctors as $doctor) {?>
-
+                    while ($result = mysqli_fetch_array($sql)) { ?>
+                    <div class="doc_info">
                         <div class="doc_name">
-                            <h9><?php echo "{$doctor['name']}"; ?></h9>
-                            <p><?php echo "{$doctor['speciality']}"; ?></p>
-                            <p>Опыт работы: <?php echo "{$doctor['experience']}"; ?> лет</p>
-                            <p>Телефон: <?php echo "{$doctor['phone']}"; ?></p>
-                            <p>Кабинет: <?php echo "{$doctor['cabinet']}"; ?></p>
+                            <h9><?php echo "{$result['name']}"; ?></h9>
+                            <p><?php echo "{$result['speciality']}"; ?></p>
+                            <p>Опыт работы: <?php echo "{$result['experience']}"; ?> лет</p>
+                            <p>Телефон: <?php echo "{$result['phone']}"; ?></p>
                         </div>
                         <div class="doc_photo">
-                            <img src="<?php echo $doctor['photo']; ?>"width="250" height="250px"/>
+                            <img src="<?php echo $result['photo']; ?>" width="250" height="250px"/>
                         </div>
                     </div>
                     <?php } ?>
