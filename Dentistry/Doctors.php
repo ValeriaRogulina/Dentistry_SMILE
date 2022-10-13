@@ -1,6 +1,6 @@
 <?php require 'db.php'; 
-$sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
-?>
+$sql = mysqli_query($connection, 'SELECT * FROM `doctor`');?>
+
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -9,11 +9,11 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
      <link href="https://fonts.googleapis.com/css?family=Italiana|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link>
-    <link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
-    <!-- Bootstrap сетка -->
-    <link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+	<!-- Bootstrap сетка -->
+	<link rel="stylesheet" href="libs/bootstrap-grid.min.css">
     <!-- Стили сайта -->
-    <link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/styles.css">
     <title>Dentistry</title>
 </head>
 <body>
@@ -49,18 +49,21 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
             </div>
                 <div class="doctors">
                     <?php
-                    while ($result = mysqli_fetch_array($sql)) { ?>
+                     $doctors=get_doctors();
+                    foreach ($doctors as $doctor) { ?>
+
                     <div class="doc_info">
                         <div class="doc_name">
-                            <a href="Doctor_profile.php"><?php echo "{$result['name']}"; ?></a>
-                            <p><?php echo "{$result['speciality']}"; ?></p>
-                            <p>Опыт работы: <?php echo "{$result['experience']}"; ?> лет</p>
+                            <h9><a  href="Doctor_profile.php?id_doctor=<?php echo $doctor['id_doctor']; ?>"><?php echo $doctor['name'];  ?></a></h9>
+                            <p><?php echo $doctor['speciality']; ?> </p>
+                            <p>Опыт работы: <?php echo $doctor['experience']; ?> лет</p>
                            
                         </div>
                         <div class="doc_photo">
-                            <img src="<?php echo $result['photo']; ?>" width="250" height="250px"/>
+                            <img src="<?php echo $doctor['photo']; ?>" width="250" height="250px"/>
                         </div>
-                    </div><?php } ?>
+                    </div>
+                    <?php } ?>
                 </div>
         </div>
     </main>

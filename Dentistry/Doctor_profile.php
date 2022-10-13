@@ -1,5 +1,6 @@
 <?php require 'db.php'; 
 $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
+$result = get_doctor($_GET['id_doctor']);
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -44,23 +45,21 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
     <main>
         <section class="container">
             <div class="header_profile">
-                <img src="assets/photo/1.png">
-                <h10>Ефимов Егор Семёнович</h10>
-                <h11>Стоматолог-терапевт</h11>
-                <h11>Опыт работы: 16 лет</h11>
+                <img src="<?php echo $result['photo']; ?>">
+                <h10><?php echo "{$result['name']}"; ?></h10>
+                <h11><?php echo "{$result['speciality']}"; ?></h11>
+                <h11>Опыт работы: <?php echo "{$result['experience']}"; ?> лет</h11>
                 <div class="btn">
                     <a href="#">Записаться на приём</a>
                 </div>
                 </div>
                 <div class="doctor_info">
                     <div class="doctor_info_title">Специальность</div>
-                    <p>Специалист по комплексной реабилитации полости рта, эстетическому и функциональному протезированию на естественных зубах и имплантатах.</p>
+                    <p><?php echo "{$result['specialization']}"; ?></p>
                 </div>
                 <div class="doctor_info">
                     <div class="doctor_info_title">Образование и курсы</div>
-                    <p>2002-2007 гг. — Диплом-Ставропольская государственная медицинская академия, г. Ставрополь, присвоена квалификация врач-стоматолог, по специальности «стоматология».</p>
-                    <p>2006 г. — Интернатура, Республиканская стоматологическая поликлиника, г. Ставрополь, присвоена квалификация врача-стоматолога.</p>
-                    <p>2012-2014 гг. — Диплом-Ординатура «Федерального медико-биологического агентства», г. Москва, присвоена квалификация врача-стоматолога-ортопеда, по специальности стоматология ортопедическая.</p>
+                    <p><?php echo "{$result['education']}"; ?></p>
                 </div>
                 <div class="doctor_info">
                     <div class="doctor_info_title">Примеры работ</div>

@@ -1,12 +1,28 @@
 <?php
 $servername = 'localhost';
 $username = 'root';
-$password = 'Vepfngs.ru1';
+$password = '12345';
 $db='my_dentistry';
 
 $connection = mysqli_connect($servername, $username, $password, $db);
 // Проверяем соединение
 if (!$connection) {
 die("Connection failed: " . mysqli_connect_error());
+}
+
+
+function get_doctor($id_doctor){
+	global $connection;
+    $doctors=$connection->query("SELECT * FROM doctor WHERE id_doctor=$id_doctor");
+    foreach ($doctors as $doctor) {
+    return $doctor;
+      }
+}
+
+//врачи
+function get_doctors(){
+	global $connection;
+    $doctors=$connection->query("SELECT * FROM doctor");
+    return $doctors;
 }
 ?>
