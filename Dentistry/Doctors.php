@@ -60,7 +60,8 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');?>
                            
                         </div>
                         <div class="doc_photo">
-                            <img src="<?php echo $doctor['photo']; ?>" width="250" height="250px"/>
+                            <a  href="Doctor_profile.php?id_doctor=<?php echo $doctor['id_doctor']; ?>"> <img src="<?php echo $doctor['photo']; ?>" width="250" height="250px"/>
+                            </a>
                         </div>
                     </div>
                     <?php } ?>
