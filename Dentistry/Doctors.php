@@ -9,11 +9,11 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
      <link href="https://fonts.googleapis.com/css?family=Italiana|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link>
-	<link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
-	<!-- Bootstrap сетка -->
-	<link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+    <!-- Bootstrap сетка -->
+    <link rel="stylesheet" href="libs/bootstrap-grid.min.css">
     <!-- Стили сайта -->
-	<link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Dentistry</title>
 </head>
 <body>
@@ -52,7 +52,7 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
                     while ($result = mysqli_fetch_array($sql)) { ?>
                     <div class="doc_info">
                         <div class="doc_name">
-                            <h9><?php echo "{$result['name']}"; ?></h9>
+                            <a href="Doctor_profile.php"><?php echo "{$result['name']}"; ?></a>
                             <p><?php echo "{$result['speciality']}"; ?></p>
                             <p>Опыт работы: <?php echo "{$result['experience']}"; ?> лет</p>
                            
@@ -60,8 +60,7 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
                         <div class="doc_photo">
                             <img src="<?php echo $result['photo']; ?>" width="250" height="250px"/>
                         </div>
-                    </div>
-                    <?php } ?>
+                    </div><?php } ?>
                 </div>
         </div>
     </main>

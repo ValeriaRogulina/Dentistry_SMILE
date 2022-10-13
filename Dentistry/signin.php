@@ -1,7 +1,6 @@
 <?php
-// Подключаем библиотеку RedBeanPHP
 $connection = mysqli_connect('localhost', 'root', 'Vepfngs.ru1', 'my_dentistry');
-//Если форма авторизации отправлена...
+//Если форма авторизации отправлена
 	if ( !empty($_REQUEST['password']) and !empty($_REQUEST['login']) ) {
 		//Пишем логин и пароль из формы в переменные (для удобства работы):
 		$login = $_REQUEST['login']; 

@@ -48,8 +48,7 @@
                     <input type="text" name="login" placeholder="Логин">
                     <input type="password" name="password" placeholder="Пароль">
                     <br/>
-                    <a href="Registration.php">Нет аккаунта? Зарегистрируйтесь!</a>
-                    <br/><br/>
+                    <a href="Registration.php">Нет аккаунта? Зарегистрируйтесь.</a><br/><br/>
                     <input class="form-submit" type="submit" name="submit" value="Войти">
                 </div>
             </form>
