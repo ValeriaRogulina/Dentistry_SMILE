@@ -50,7 +50,7 @@ $result = get_doctor($_GET['id_doctor']);
                 <h11><?php echo "{$result['speciality']}"; ?></h11>
                 <h11>Опыт работы: <?php echo "{$result['experience']}"; ?> лет</h11>
                 <div class="btn">
-                    <a href="#">Записаться на приём</a>
+                    <a href="/Timetable_doc.php">Записаться на приём</a>
                 </div>
                 </div>
                 <div class="doctor_info">
