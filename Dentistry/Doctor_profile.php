@@ -1,6 +1,7 @@
 <?php require 'db.php'; 
 $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
 $result = get_doctor($_GET['id_doctor']);
+$work=get_works($_GET['id_doctor'])
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -75,10 +76,15 @@ $result = get_doctor($_GET['id_doctor']);
 				<div id="slides">
 					<div id="overflow">
 						<div class="image">
-							<article><img src="/assets/photo/1.jpg"></article>
-							<article><img src="/assets/photo/2.jpg"></article>
-							<article><img src="/assets/photo/3.jpg"></article>
-                            <article><img src="/assets/photo/4.jpg"></article>
+                            <?php
+                          
+                            foreach ($work as $works) {?>
+							<article>
+                                <img src="<?php echo $works['work']; ?>">
+                            </article>
+                        <?php
+                    }
+                    ?>
 						</div>
 					</div>
 				</div>
