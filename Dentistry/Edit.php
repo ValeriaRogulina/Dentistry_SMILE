@@ -68,7 +68,7 @@ session_start();
                         <div class="person_photo">
                             <img src="/assets/images/lk.png" width="150" height="150px"/>
                             <div class="btn" style="margin-top:20px" >
-        <a href="Edit.php">Редактировать</a>
+        <a href="Profile.php">Сохранить</a>
         </div>
                         </div>
 
@@ -76,15 +76,17 @@ session_start();
                             <div class="person_header">
                                 <h7></h7>
                             </div>
-                            
-               
-                                <p>Пол:</p>
-                                <p>Дата рождения:</p>
-                                <p>Телефон:</p>
-                                <p>Хронические заболевания/Аллергии:</p>
-                                <p>Полис ОМС:</p>
-                                <p>Паспортные данные:</p>
-                                <p>Снилс:</p>
+                            <form action="Edit.php" method="POST" name="editerform">
+                              
+                                <p>Пол: <input type="text" name="sex"></p>
+                                <p>Дата рождения: <input type="text" name="birthday"></p>
+                                <p>Телефон: <input type="text" name="phone"></p>
+                                <p> Адрес: <input type="text" name="address"></p>
+                                <p>Хронические заболевания/Аллергии: <input type="text" name="diseases"></p>
+                                <p>Полис ОМС: <input type="text" name="POLIS"></p>
+                                <p>Паспортные данные:<input type="text" name="passport"></p>
+                                <p>Снилс: <input type="text" name="SNILS"></p>
+                            </form>
                             </div>
                         </div>
                     </section>

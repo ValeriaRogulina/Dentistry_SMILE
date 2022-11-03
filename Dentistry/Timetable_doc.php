@@ -1,5 +1,7 @@
 <?php require 'db.php'; 
 $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
+$result = get_doctor($_GET['id_doctor']);
+$time=get_times($_GET['id_doctor'])
 ?>
 
 <!DOCTYPE html>
@@ -49,59 +51,55 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
                 <h2>Запись к врачу онлайн</h2>
             </div>
             <div class="header_profile">
-                <img src="/assets/photo/1.png">
-                <h10>Ефимов Егор Семенович</h10>
-                <h11>Стоматолог-терапевт</h11>
-                <h11>Опыт работы: 8 лет</h11>
+                <img src="<?php echo $result['photo']; ?>">
+                <h10><?php echo "{$result['name']}"; ?></h10>
+                <h11><?php echo "{$result['speciality']}"; ?></h11>
+                <h11>Опыт работы: <?php echo "{$result['experience']}"; ?> лет</h11>
              </div>
             <div class="doctor_info">
                 <h12>Дата приёма</h12>
                     <div class="row_schedule">
                         <div class="row_schedule_btn">
+
+                    <?php
+                    $d = new DateTime(); ?>
+                        
+
                             <input id="date-21.10.2022" type="radio" name="date" value="21.10.2022">
-                            <label for="date-21.10.2022">завтра</label>
+                            <label for="date-21.10.2022"> <?php echo $d->modify('+1day')->format('d.m.Y'); ?></label>
                         </div>
                         <div class="row_schedule_btn">
                             <input id="date-22.10.2022" type="radio" name="date" value="22.10.2022">
-                            <label for="date-22.10.2022">22.10.2022</label>
+                            <label for="date-22.10.2022"> <?php echo $d->modify('+1day')->format('d.m.Y'); ?></label>
                         </div>
                         <div class="row_schedule_btn">
                             <input id="date-23.10.2022" type="radio" name="date" value="23.10.2022">
-                            <label for="date-23.10.2022">23.10.2022</label>
+                            <label for="date-23.10.2022"> <?php echo $d->modify('+1day')->format('d.m.Y'); ?></label>
                         </div>
                         <div class="row_schedule_btn">
                             <input id="date-24.10.2022" type="radio" name="date" value="24.10.2022">
-                            <label for="date-24.10.2022">24.10.2022</label>
+                            <label for="date-24.10.2022"> <?php echo $d->modify('+1day')->format('d.m.Y'); ?></label>
                         </div>
                         <div class="row_schedule_btn">
                             <input id="date-25.10.2022" type="radio" name="date" value="25.10.2022">
-                            <label for="date-25.10.2022">25.10.2022</label>
+                            <label for="date-25.10.2022"> <?php echo $d->modify('+1day')->format('d.m.Y'); ?></label>
                         </div>
                     </div>
             </div>
             <div class="doctor_info">
                     <h12>Время приёма</h12>
                     <div class="row_schedule">
+
+                    <?php
+                          
+                            foreach ($time as $times) {?>
+
                         <div class="row_schedule_btn">
-                            <input id="time-9:00" type="radio" name="time" value="9:00">
-                            <label for="time-9:00">9:00</label>
+                            <input id="time-<?php echo $times['time'];  ?>" type="radio" name="time" value="<?php echo $times['time'];  ?>">
+                            <label for="time-<?php echo $times['time'];  ?>"><?php echo $times['time'];  ?></label>
                         </div>
-                        <div class="row_schedule_btn">
-                            <input id="time-10:30" type="radio" name="time" value="10:30">
-                            <label for="time-10:30">10:30</label>
-                        </div>
-                        <div class="row_schedule_btn">
-                            <input id="time-12:00" type="radio" name="time" value="12:00">
-                            <label for="time-12:00">12:00</label>
-                        </div>
-                        <div class="row_schedule_btn">
-                            <input id="time-13:30" type="radio" name="time" value="13:40">
-                            <label for="time-13:30">13:30</label>
-                        </div>
-                        <div class="row_schedule_btn">
-                            <input id="time-15:00" type="radio" name="time" value="15:00">
-                            <label for="time-15:00">15:00</label>
-                        </div>
+                        
+                    <?php } ?>
                     </div>
             </div>
             <div class="button">

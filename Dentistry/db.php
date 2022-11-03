@@ -10,7 +10,7 @@ if (!$connection) {
 die("Connection failed: " . mysqli_connect_error());
 }
 
-//плучение врача по id
+//поучение врача по id
 function get_doctor($id_doctor){
 	global $connection;
     $doctors=$connection->query("SELECT * FROM doctor WHERE id_doctor=$id_doctor");
@@ -26,10 +26,18 @@ function get_doctors(){
     return $doctors;
 }
 
+
 //получение работ по id доктора
 function get_works($id_doctor){
     global $connection;
     $works=$connection->query("SELECT * FROM works WHERE id_doctor=$id_doctor");
     return $works;
+    } 
+
+//получение времени приёма по id доктора
+function get_times($id_doctor){
+    global $connection;
+    $times=$connection->query("SELECT * FROM time_of_doctor WHERE id_doctor=$id_doctor");
+    return $times;
     } 
 ?>

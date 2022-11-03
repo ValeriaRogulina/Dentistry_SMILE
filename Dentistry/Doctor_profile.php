@@ -2,6 +2,7 @@
 $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
 $result = get_doctor($_GET['id_doctor']);
 $work=get_works($_GET['id_doctor'])
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -46,12 +47,18 @@ $work=get_works($_GET['id_doctor'])
     <main>
         <section class="container">
             <div class="header_profile">
+
+                
+
                 <img src="<?php echo $result['photo']; ?>">
                 <h10><?php echo "{$result['name']}"; ?></h10>
                 <h11><?php echo "{$result['speciality']}"; ?></h11>
                 <h11>Опыт работы: <?php echo "{$result['experience']}"; ?> лет</h11>
                 <div class="btn">
-                    <a href="/Timetable_doc.php">Записаться на приём</a>
+               
+
+                    <a href="Timetable_doc.php?id_doctor=<?php echo $result ['id_doctor'];?>" >Записаться на приём</a>
+                   
                 </div>
                 </div>
                 <div class="doctor_info">
