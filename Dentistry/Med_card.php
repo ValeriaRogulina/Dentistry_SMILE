@@ -45,7 +45,6 @@ $sql2 = mysqli_query($connection, 'SELECT * FROM `doctor`');
         </a>
     </div>                                                        
     </header>
-    
     <main>
         <div class="private_office">
             <div class="leftside_bar">
@@ -62,19 +61,78 @@ $sql2 = mysqli_query($connection, 'SELECT * FROM `doctor`');
                 <div class="page_content">
                     <section class="medcard">
                             <div class="appointment">
-                                <?php 
-                                    while ($result1 = mysqli_fetch_array($sql1)) { ?>
-                                    <div class="card_info">
-                                        <h8>Приём №<?php echo "&nbsp{$result1['idappointment']}"; ?></h8>
-                                        <p>Дата приёма:<?php echo "&nbsp{$result1['date']}"; ?></p>
-                                        <p>Обращение:<?php echo "&nbsp{$result1['complaint']}"; ?></p>
-                                        <p>Оказанные услуги:<?php echo "&nbsp{$result1['name_service']}"; ?></p>
-                                        <?php $result2 = mysqli_fetch_array($sql2); ?>
-                                        <p>Лечащий врач:<?php echo "&nbsp{$result2['name']} (Каб.{$result2['cabinet']} {$result2['timetable']})"; ?></p>
-                                        <p>Сумма оплаты = <?php echo "&nbsp{$result1['price']} рублей"; ?></p>
+                                <div class="card_info">
+                                    <h8>Приём № 1</h8>
+                                    <div class="line"></div>
+                                    <div class = "part">
+                                        <img src="/assets/images/calendar.png" width="25" height="25px"/>
+                                        <p>Дата приёма: 10.11.2022</p>
                                     </div>
-                                <?php
-                                     } ?>
+                                    <div class = "part">
+                                        <img src="/assets/images/clock.png" width="25" height="25px"/>
+                                        <p>Время приёма приёма: 11:30</p>
+                                    </div>
+                                    <div class = "part">
+                                        <img src="/assets/images/doc.png" width="25" height="25px"/>
+                                        <p>Лечащий врач: Ефимов Егор Семенович</p>
+                                    </div>
+                                    <div class = "part">
+                                        <img src="/assets/images/tooth.png" width="25" height="25px"/>
+                                        <p>Услуги: Лечение кариеса</p>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class = "sum">
+                                        <p>Сумма: 5 700 р.</p>
+                                    </div>
+                                </div>
+                                <div class="card_info">
+                                    <h8>Приём № 2</h8>
+                                    <div class="line"></div>
+                                    <div class = "part">
+                                        <img src="/assets/images/calendar.png" width="25" height="25px"/>
+                                        <p>Дата приёма: 10.11.2022</p>
+                                    </div>
+                                    <div class = "part">
+                                        <img src="/assets/images/clock.png" width="25" height="25px"/>
+                                        <p>Время приёма приёма: 11:30</p>
+                                    </div>
+                                    <div class = "part">
+                                        <img src="/assets/images/doc.png" width="25" height="25px"/>
+                                        <p>Лечащий врач: Ефимов Егор Семенович</p>
+                                    </div>
+                                    <div class = "part">
+                                        <img src="/assets/images/tooth.png" width="25" height="25px"/>
+                                        <p>Услуги: Лечение кариеса</p>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class = "sum">
+                                        <p>Сумма: 5 700 р.</p>
+                                    </div>
+                                </div>
+                                <div class="card_info">
+                                    <h8>Приём № 3</h8>
+                                    <div class="line"></div>
+                                    <div class = "part">
+                                        <img src="/assets/images/calendar.png" width="25" height="25px"/>
+                                        <p>Дата приёма: 10.11.2022</p>
+                                    </div>
+                                    <div class = "part">
+                                        <img src="/assets/images/clock.png" width="25" height="25px"/>
+                                        <p>Время приёма приёма: 11:30</p>
+                                    </div>
+                                    <div class = "part">
+                                        <img src="/assets/images/doc.png" width="25" height="25px"/>
+                                        <p>Лечащий врач: Ефимов Егор Семенович</p>
+                                    </div>
+                                    <div class = "part">
+                                        <img src="/assets/images/tooth.png" width="25" height="25px"/>
+                                        <p>Услуги: Лечение кариеса</p>
+                                    </div>
+                                    <div class="line"></div>
+                                    <div class = "sum">
+                                        <p>Сумма: 5 700 р.</p>
+                                    </div>
+                                </div>
                             </div>
                     </section>
                 </div>

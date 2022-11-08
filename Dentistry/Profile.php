@@ -5,8 +5,6 @@ session_start();
 <?php
     $sql1 = mysqli_query($connection, 'SELECT * FROM `patient` WHERE idpatient="'.$_SESSION['id'].'"');
     $result1 = mysqli_fetch_assoc($sql1);
-
-
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -46,7 +44,6 @@ session_start();
         <a href="/Profile.php">
         <img src="/assets/images/lk.png" width="50" height="50px"/>
         </a>
-
     </div>                                                        
     </header>
     
@@ -62,22 +59,20 @@ session_start();
                     <a href="/logout.php">Выйти</a>
                 </div>
             </div>
-            <div class="right_info">
+            <div class="right_info_profile">
                 <div class="page_content">
                     <section class="person">
                         <div class="person_photo">
-                            <img src="/assets/images/lk.png" width="150" height="150px"/>
-                            <div class="btn" style="margin-top:20px" >
+                            <img src="/assets/images/lk.png" width="200" height="200px"/>
+                            <div class="btn" style="margin-top:20px">
         <a href="Edit.php">Редактировать</a>
-        </div>
                         </div>
-
+                            </div>
                         <div class="person_info">
                             <div class="person_header">
-                                <h7></h7>
+                                <h7><?php echo "{$result1['surname']} {$result1['name']} {$result1['patronymic']}";?></h7>
                             </div>
-                            
-               
+                            <div class="short_info">
                                 <p>Пол:</p>
                                 <p>Дата рождения:</p>
                                 <p>Телефон:</p>
