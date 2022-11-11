@@ -5,6 +5,8 @@ session_start();
 <?php
     $sql1 = mysqli_query($connection, 'SELECT * FROM `patient` WHERE idpatient="'.$_SESSION['id'].'"');
     $result1 = mysqli_fetch_assoc($sql1);
+    $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_patient="'.$_SESSION['id'].'"');
+    $result2 = mysqli_fetch_assoc($sql2);
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -66,6 +68,7 @@ session_start();
                             <img src="/assets/images/lk.png" width="200" height="200px"/>
                             <div class="btn" style="margin-top:20px">
         <a href="Edit.php">Редактировать</a>
+
                         </div>
                             </div>
                         <div class="person_info">
@@ -73,13 +76,14 @@ session_start();
                                 <h7><?php echo "{$result1['surname']} {$result1['name']} {$result1['patronymic']}";?></h7>
                             </div>
                             <div class="short_info">
-                                <p>Пол:</p>
-                                <p>Дата рождения:</p>
-                                <p>Телефон:</p>
-                                <p>Хронические заболевания/Аллергии:</p>
-                                <p>Полис ОМС:</p>
-                                <p>Паспортные данные:</p>
-                                <p>Снилс:</p>
+                                <p>Пол: <?php echo "{$result2['gender']}";?></p>
+                                <p>Дата рождения: <?php echo "{$result2['birthday']}";?></p>
+                                <p>Телефон: <?php echo "{$result2['phone']}";?></p>
+                                <p>Адрес: <?php echo "{$result2['address']}";?></p>
+                                <p>Хронические заболевания/Аллергии: <?php echo "{$result2['diseases']}";?></p>
+                                <p>Полис ОМС: <?php echo "{$result2['POLIS']}";?></p>
+                                <p>Паспортные данные: <?php echo "{$result2['passport']}";?></p>
+                                <p>Снилс: <?php echo "{$result2['SNILS']}";?></p>
                             </div>
                         </div>
                     </section>
