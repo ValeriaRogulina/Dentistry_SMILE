@@ -1,7 +1,13 @@
 <?php 
 require 'db.php'; 
 session_start();
-
+if(!isset($_SESSION['id'])):
+header("location:Authorization.php");
+else:
+?>
+<?php endif; 
+$name_patient=$_SESSION['id'];
+$query =$connection->query("SELECT * FROM reception WHERE name_patient='".$name_patient."'");
 $sql1 = mysqli_query($connection, 'SELECT * FROM `appointment` WHERE idpatient="'.$_SESSION['id'].'"');
 $sql2 = mysqli_query($connection, 'SELECT * FROM `doctor`');
 ?>
@@ -13,11 +19,11 @@ $sql2 = mysqli_query($connection, 'SELECT * FROM `doctor`');
      <link href="https://fonts.googleapis.com/css?family=Italiana|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link>
-	<link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
-	<!-- Bootstrap сетка -->
-	<link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+    <!-- Bootstrap сетка -->
+    <link rel="stylesheet" href="libs/bootstrap-grid.min.css">
     <!-- Стили сайта -->
-	<link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <title>Dentistry</title>
 </head>
 <body>
@@ -57,87 +63,41 @@ $sql2 = mysqli_query($connection, 'SELECT * FROM `doctor`');
                     <a href="/logout.php">Выйти</a>
                 </div>
             </div>
+        <?php
+        foreach ($query as $row) {;?>
             <div class="right_info">
                 <div class="page_content">
                     <section class="medcard">
                             <div class="appointment">
                                 <div class="card_info">
-                                    <h8>Приём № 1</h8>
+                                    <h8>Приём № <?php echo "{$row['id_reception']}";?></h8>
                                     <div class="line"></div>
                                     <div class = "part">
                                         <img src="/assets/images/calendar.png" width="25" height="25px"/>
-                                        <p>Дата приёма: 10.11.2022</p>
+                                        <p>Дата приёма: <?php echo "{$row['date']}";?></p>
                                     </div>
                                     <div class = "part">
                                         <img src="/assets/images/clock.png" width="25" height="25px"/>
-                                        <p>Время приёма приёма: 11:30</p>
+                                        <p>Время приёма приёма: <?php echo "{$row['time_reception']}";?></p>
                                     </div>
                                     <div class = "part">
                                         <img src="/assets/images/doc.png" width="25" height="25px"/>
-                                        <p>Лечащий врач: Ефимов Егор Семенович</p>
+                                        <p>Лечащий врач: <?php echo "{$row['doctor']}";?></p>
                                     </div>
-                                    <div class = "part">
-                                        <img src="/assets/images/tooth.png" width="25" height="25px"/>
-                                        <p>Услуги: Лечение кариеса</p>
-                                    </div>
+                                    
                                     <div class="line"></div>
-                                    <div class = "sum">
-                                        <p>Сумма: 5 700 р.</p>
-                                    </div>
+                                    
                                 </div>
-                                <div class="card_info">
-                                    <h8>Приём № 2</h8>
-                                    <div class="line"></div>
-                                    <div class = "part">
-                                        <img src="/assets/images/calendar.png" width="25" height="25px"/>
-                                        <p>Дата приёма: 10.11.2022</p>
-                                    </div>
-                                    <div class = "part">
-                                        <img src="/assets/images/clock.png" width="25" height="25px"/>
-                                        <p>Время приёма приёма: 11:30</p>
-                                    </div>
-                                    <div class = "part">
-                                        <img src="/assets/images/doc.png" width="25" height="25px"/>
-                                        <p>Лечащий врач: Ефимов Егор Семенович</p>
-                                    </div>
-                                    <div class = "part">
-                                        <img src="/assets/images/tooth.png" width="25" height="25px"/>
-                                        <p>Услуги: Лечение кариеса</p>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class = "sum">
-                                        <p>Сумма: 5 700 р.</p>
-                                    </div>
-                                </div>
-                                <div class="card_info">
-                                    <h8>Приём № 3</h8>
-                                    <div class="line"></div>
-                                    <div class = "part">
-                                        <img src="/assets/images/calendar.png" width="25" height="25px"/>
-                                        <p>Дата приёма: 10.11.2022</p>
-                                    </div>
-                                    <div class = "part">
-                                        <img src="/assets/images/clock.png" width="25" height="25px"/>
-                                        <p>Время приёма приёма: 11:30</p>
-                                    </div>
-                                    <div class = "part">
-                                        <img src="/assets/images/doc.png" width="25" height="25px"/>
-                                        <p>Лечащий врач: Ефимов Егор Семенович</p>
-                                    </div>
-                                    <div class = "part">
-                                        <img src="/assets/images/tooth.png" width="25" height="25px"/>
-                                        <p>Услуги: Лечение кариеса</p>
-                                    </div>
-                                    <div class="line"></div>
-                                    <div class = "sum">
-                                        <p>Сумма: 5 700 р.</p>
-                                    </div>
+                                
                                 </div>
                             </div>
                     </section>
                 </div>
             </div>
         </div>
+        <?php
+}
+;?>
     </main>
     
     <footer>
