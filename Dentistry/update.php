@@ -72,8 +72,8 @@ session_start();
                                 <h7></h7>
                             </div>
                             <?php
-$id_patient=$_SESSION['id'];
-$gender=htmlspecialchars($_POST['gender']);
+$idpatient=$_SESSION['id'];
+$gender=htmlspecialchars($_POST["gender"]);
 $birthday=htmlspecialchars($_POST['birthday']);
 $phone=htmlspecialchars($_POST['phone']);
 $address=htmlspecialchars($_POST['address']);
@@ -82,13 +82,12 @@ $POLIS=htmlspecialchars($_POST['POLIS']);
 $passport=htmlspecialchars($_POST['passport']);
 $SNILS=htmlspecialchars($_POST['SNILS']);
 
-$update_sql = "UPDATE personal data SET gender='$gender', birthday='$birthday', phone='$phone', address='$address', diseases='$diseases', POLIS='$POLIS', passport='$passport', SNILS='$SNILS' WHERE id_patient=$id_patient";
+$update_sql = "UPDATE personal data SET gender='$gender', birthday='$birthday', phone='$phone', address='$address', diseases='$diseases', POLIS='$POLIS', passport='$passport', SNILS='$SNILS' WHERE idpatient=$idpatient";
 mysqli_query($update_sql) or die("Ошибка вставки" . mysqli_error());
 echo '<p>Запись успешно обновлена!</p>';
 ?>
 
                             </div>
-                        </div>
                     </section>
                 </div>
             </div>

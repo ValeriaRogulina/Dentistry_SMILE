@@ -1,4 +1,5 @@
 <?php require 'db.php'; 
+session_start();
 $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');?>
 
 <!DOCTYPE html>

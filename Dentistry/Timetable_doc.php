@@ -119,7 +119,7 @@ if(isset($_POST["zapis"])){
                     </div>
                 </div>
                 <div class="button">
-                    <input class="form-submit" type="submit" name="submit" value="Записаться на приём">
+                    <input class="form-submit" type="submit" name="zapis" value="Записаться на приём">
                 </div>
             </form>
         </div>  
