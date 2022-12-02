@@ -6,9 +6,8 @@ session_start();
     $sql1 = mysqli_query($connection, 'SELECT * FROM `patient` WHERE
      idpatient="'.$_SESSION['id'].'"');
     $result1 = mysqli_fetch_assoc($sql1);
-    $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE idpatient="'.$_SESSION['id'].'"');
-    $result2 = mysqli_fetch_assoc($sql2);
-    $row = mysqli_fetch_array($sql2);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -68,22 +67,43 @@ session_start();
                         <div class="person_photo">
                             <img src="/assets/images/lk.png" width="150" height="150px"/>
                             
-        <form action="update.php" method="POST">
+        <form action="Edit.php" method="POST">
             <div class="btn" style="margin-top:20px" >
-                <a href="update.php" id='submit' name='submit' input type='submit'>Сохранить</a>
-           </div>                     
+                <a href="Profile.php" id='submit' name='submit' input type='submit'>Сохранить</a>
+           </div>     
+           <?php          
+              $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_data="'.$_SESSION['id'].'"');
+            $row = mysqli_fetch_array($sql2); 
+            ?>     
                         <div class="person_info">
-                                <input type='hidden' name='idpatient'  value='%s'>
-                                <p>Пол: <input type="" name="gender" value="<?= $result2['gender'] ?>"></p>
-                                <p>Дата рождения: <input type="text" name="birthday" value="<?= $result2['birthday'] ?>"></p>
-                                <p>Телефон: <input type="text" name="phone" value="<?= $result2['phone'] ?>"></p>
-                                <p> Адрес: <input type="text" name="address" value="<?= $result2['address'] ?>"></p>
-                                <p>Хронические заболевания/Аллергии: <input type="text" name="diseases" value="<?= $result2['diseases'] ?>"></p>
-                                <p>Полис ОМС: <input type="text" name="POLIS" value="<?= $result2['POLIS'] ?>"></p>
-                                <p>Паспортные данные:<input type="text" name="passport" value="<?= $result2['passport'] ?>"></p>
-                                <p>Снилс: <input type="text" name="SNILS" value="<?= $result2['SNILS'] ?>"></p>
+                                <input type='hidden' name='id_patient'  value='%s'>
+                                <p>Пол: <input type="text" name="gender" value="<?= $row['gender'] ?>"></p>
+                                <p>Дата рождения: <input type="text" name="birthday" value="<?= $row['birthday'] ?>"></p>
+                                <p>Телефон: <input type="text" name="phone" value="<?= $row['phone'] ?>"></p>
+                                <p> Адрес: <input type="text" name="address" value="<?= $row['address'] ?>"></p>
+                                <p>Хронические заболевания/Аллергии: <input type="text" name="diseases" value="<?= $row['diseases'] ?>"></p>
+                                <p>Полис ОМС: <input type="text" name="POLIS" value="<?= $row['POLIS'] ?>"></p>
+                                <p>Паспортные данные:<input type="text" name="passport" value="<?= $row['passport'] ?>"></p>
+                                <p>Снилс: <input type="text" name="SNILS" value="<?= $row['SNILS'] ?>"></p>
                                 </div>
                             </form>
+                            <?php
+ if (isset($_POST["submit"])) {
+$id_patient=htmlspecialchars($_GET["id_data"]);
+$gender=htmlspecialchars($_POST["gender"]);
+$birthday=htmlspecialchars($_POST['birthday']);
+$phone=htmlspecialchars($_POST['phone']);
+$address=htmlspecialchars($_POST['address']);
+$diseases=htmlspecialchars($_POST['diseases']);
+$POLIS=htmlspecialchars($_POST['POLIS']);
+$passport=htmlspecialchars($_POST['passport']);
+$SNILS=htmlspecialchars($_POST['SNILS']);
+
+$update_sql = "UPDATE personal data SET gender='$gender', birthday='$birthday', phone='$phone', address='$address', diseases='$diseases', POLIS='$POLIS', passport='$passport', SNILS='$SNILS'";
+mysqli_query($update_sql) or die("Ошибка вставки" . mysqli_error());
+echo '<p>Запись успешно обновлена!</p>';
+}
+?>
                         </div>
                     </section>
                 </div>

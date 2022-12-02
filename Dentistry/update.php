@@ -1,8 +1,12 @@
 <?php  
 require 'db.php'; 
 session_start();
-?>
 
+$sql1 = mysqli_query($connection, 'SELECT * FROM `patient` WHERE idpatient="'.$_SESSION['id'].'"');
+    $result1 = mysqli_fetch_assoc($sql1);
+    $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_patient="'.$_SESSION['id'].'"');
+    $result2 = mysqli_fetch_assoc($sql2);
+    ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -62,9 +66,30 @@ session_start();
                     <section class="person">
                         <div class="person_photo">
                             <img src="/assets/images/lk.png" width="150" height="150px"/>
-                            <div class="btn" style="margin-top:20px" >
-        <a href="profile.php" input id='submit' type='submit'>В профиль</a>
+
+           <?php    
+
+              $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_patient="'.$_SESSION['id'].'"');
+            $row = mysqli_fetch_array($sql2); 
+            ?>     
+            <div class="person_info">
+                            <div class="person_header">
+                                <h7><?php echo "{$result1['surname']} {$result1['name']} {$result1['patronymic']}";?></h7>
+                            </div>
+                            <div class="btn" style="margin-top:20px">
+        <a href="Profile.php">В профиль</a>
         </div>
+                        <div class="short_info">
+                                <p>Пол: <?php echo "{$row['gender']}";?></p>
+                                <p>Дата рождения: <?php echo "{$row['birthday']}";?></p>
+                                <p>Телефон: <?php echo "{$row['phone']}";?></p>
+                                <p>Адрес: <?php echo "{$row['address']}";?></p>
+                                <p>Хронические заболевания/Аллергии: <?php echo "{$row['diseases']}";?></p>
+                                <p>Полис ОМС: <?php echo "{$row['POLIS']}";?></p>
+                                <p>Паспортные данные: <?php echo "{$row['passport']}";?></p>
+                                <p>Снилс: <?php echo "{$row['SNILS']}";?></p>
+                            </div>
+                            
                         </div>
 
                         <div class="person_info">
@@ -72,7 +97,8 @@ session_start();
                                 <h7></h7>
                             </div>
                             <?php
-$idpatient=$_SESSION['id'];
+ if (isset($_POST["submit"])) {
+$id_patient=htmlspecialchars($_POST["id_data"]);
 $gender=htmlspecialchars($_POST["gender"]);
 $birthday=htmlspecialchars($_POST['birthday']);
 $phone=htmlspecialchars($_POST['phone']);
@@ -82,9 +108,10 @@ $POLIS=htmlspecialchars($_POST['POLIS']);
 $passport=htmlspecialchars($_POST['passport']);
 $SNILS=htmlspecialchars($_POST['SNILS']);
 
-$update_sql = "UPDATE personal data SET gender='$gender', birthday='$birthday', phone='$phone', address='$address', diseases='$diseases', POLIS='$POLIS', passport='$passport', SNILS='$SNILS' WHERE idpatient=$idpatient";
+$update_sql = "UPDATE personal data SET gender='$gender', birthday='$birthday', phone='$phone', address='$address', diseases='$diseases', POLIS='$POLIS', passport='$passport', SNILS='$SNILS'";
 mysqli_query($update_sql) or die("Ошибка вставки" . mysqli_error());
 echo '<p>Запись успешно обновлена!</p>';
+}
 ?>
 
                             </div>
