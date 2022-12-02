@@ -89,17 +89,16 @@ session_start();
                             </form>
                             <?php
  if (isset($_POST["submit"])) {
-$id_patient=htmlspecialchars($_GET["id_data"]);
-$gender=htmlspecialchars($_POST["gender"]);
-$birthday=htmlspecialchars($_POST['birthday']);
-$phone=htmlspecialchars($_POST['phone']);
-$address=htmlspecialchars($_POST['address']);
-$diseases=htmlspecialchars($_POST['diseases']);
-$POLIS=htmlspecialchars($_POST['POLIS']);
-$passport=htmlspecialchars($_POST['passport']);
-$SNILS=htmlspecialchars($_POST['SNILS']);
+$gender=$_POST["gender"];
+$birthday=$_POST['birthday'];
+$phone=$_POST['phone'];
+$address=$_POST['address'];
+$diseases=$_POST['diseases'];
+$POLIS=$_POST['POLIS'];
+$passport=$_POST['passport'];
+$SNILS=$_POST['SNILS'];
 
-$update_sql = "UPDATE personal data SET gender='$gender', birthday='$birthday', phone='$phone', address='$address', diseases='$diseases', POLIS='$POLIS', passport='$passport', SNILS='$SNILS'";
+$update_sql = "UPDATE personal data SET gender='$gender', birthday='$birthday', phone='$phone', address='$address', diseases='$diseases', passport='$passport', POLIS='$POLIS', SNILS='$SNILS' WHERE id_data = '$id_data';" ;
 mysqli_query($update_sql) or die("Ошибка вставки" . mysqli_error());
 echo '<p>Запись успешно обновлена!</p>';
 }
