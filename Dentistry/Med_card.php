@@ -96,21 +96,23 @@ if (isset($_GET['del'])) { //проверяем, есть ли переменн�
                                         <p>Лечащий врач: <?php echo "{$row['doctor']}";?></p>
                                     </div>
                                     <?php
-        echo
-        "<a href='?del={$row['id_reception']}' >Удалить</a>";?>
+                                    echo
+                                    "<a href='?del={$row['id_reception']}' >Удалить</a>";?>
                                     <div class="line"></div>
-                                    
+
                                 </div>
-                                
+
                                 </div>
+
                             </div>
+                            <?php
+                    }
+                    ;?>
                     </section>
                 </div>
             </div>
         </div>
-        <?php
-}
-;?>
+       
     </main>
     
     <footer>
