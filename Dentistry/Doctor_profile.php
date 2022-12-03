@@ -1,9 +1,14 @@
 <?php require 'db.php'; 
+session_start();
 $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
 $result = get_doctor($_GET['id_doctor']);
-$work=get_works($_GET['id_doctor'])
-
+$work=get_works($_GET['id_doctor']);
+if(!isset($_SESSION["session_name"])):
+header("location:Authorization.php");
+else:
 ?>
+<?php endif; ?>
+    
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -22,7 +27,7 @@ $work=get_works($_GET['id_doctor'])
 <body>
     <header>
     <div class="logo">
-        <a href="/Dentistry.php">
+        <a href="/Profile.php">
         <img src="/assets/images/logo.jpg" width="350" height="80px"/>
         </a>
     </div>

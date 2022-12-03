@@ -1,20 +1,26 @@
 <?php require 'db.php'; 
 session_start();
+if(!isset($_SESSION["session_name"])):
+header("location:Authorization.php");
+else:
+?>
+<?php endif; ?>
+<?php
 $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');
 $result = get_doctor($_GET['id_doctor']);
 $time=get_times($_GET['id_doctor']);
 
 if(isset($_POST["zapis"])){
-    if(!empty($_POST['date']) && !empty($_POST['time_reception']) ) {
-        $date= $_POST['date'];
+    if(!empty($_POST['date_res']) && !empty($_POST['time_reception']) ) {
+        $date_res= $_POST['date_res'];
         $time_reception=$_POST['time_reception'];
         $doctor=$_POST['doctor'];
-        $name_patient=$_SESSION['id'];
+        $name_patient=$_SESSION['session_name'];
 
-    $query=$connection->query("SELECT * FROM reception WHERE 'date'='".$date."' AND time_reception='".$time_reception."'AND doctor='".$doctor."'");
+    $query=$connection->query("SELECT * FROM reception WHERE date_res='".$date_res."' AND time_reception='".$time_reception."'AND doctor='".$doctor."'");
     $numrows=mysqli_num_rows($query);
     if($numrows==0) {
-        $sqll="INSERT INTO reception (name_patient, 'date', time_reception, doctor) VALUES('$name_patient', '$date', '$time_reception', '$doctor')";
+        $sqll="INSERT INTO reception (name_patient, date_res, time_reception, doctor) VALUES( '$name_patient', '$date_res', '$time_reception', '$doctor')";
         $res=$connection->query($sqll);
     if($res){
         $message = "Вы записаны";
@@ -62,7 +68,7 @@ if(isset($_POST["zapis"])){
         <a href="#">Обратный звонок</a>
     </div>
     <div class="lk">
-        <a href="/Authorization.php">
+        <a href="/Profile.php">
         <img src="/assets/images/lk.png" width="50" height="50px"/>
         </a>
     </div>                                                        
@@ -75,7 +81,13 @@ if(isset($_POST["zapis"])){
             <form action="Timetable_doc.php?id_doctor=<?php echo $result['id_doctor']; ?>" method="post">
                 <div class="header_profile">
                     <img src="<?php echo $result['photo']; ?>">
-                    <h10><?php echo "{$result['name']}"; ?></h10>
+                    <div class="name_d">
+                     <select name="doctor">
+                        <option>
+                    <?php echo "{$result['name']}"; ?>
+                    </option>
+                    </select>
+                </div>
                     <h11><?php echo "{$result['speciality']}"; ?></h11>
                     <h11>Опыт работы: <?php echo "{$result['experience']}"; ?> лет</h11>
                 </div>
@@ -85,35 +97,36 @@ if(isset($_POST["zapis"])){
                             <div class="row_schedule_btn">
                         <?php
                         $d = new DateTime(); ?>
-                                <input id="date-21.10.2022" type="radio" name="date" value="21.10.2022">
-                                <label for="date-21.10.2022"> <?php echo $d->modify('+1day')->format('d.m.Y'); ?></label>
+                                <input id="date-21.10.2022" type="radio" name="date_res" value="<?php echo $d->modify('+1day')->format('d.m.Y'); ?>">
+                                <label for="date-21.10.2022"> <?php echo $d->format('d.m.Y'); ?></label>
                             </div>
                             <div class="row_schedule_btn">
-                                <input id="date-22.10.2022" type="radio" name="date" value="22.10.2022">
-                                <label for="date-22.10.2022"> <?php echo $d->modify('+1day')->format('d.m.Y'); ?></label>
+                                <input id="date-22.10.2022" type="radio" name="date_res" value="<?php echo $d->modify('+1day')->format('d.m.Y'); ?>">
+                                <label for="date-22.10.2022"> <?php echo $d->format('d.m.Y'); ?></label>
                             </div>
                             <div class="row_schedule_btn">
-                                <input id="date-23.10.2022" type="radio" name="date" value="23.10.2022">
-                                <label for="date-23.10.2022"> <?php echo $d->modify('+1day')->format('d.m.Y'); ?></label>
+                                <input id="date-23.10.2022" type="radio" name="date_res" value="<?php echo $d->modify('+1day')->format('d.m.Y'); ?>">
+                                <label for="date-23.10.2022"> <?php echo $d->format('d.m.Y'); ?></label>
                             </div>
                             <div class="row_schedule_btn">
-                                <input id="date-24.10.2022" type="radio" name="date" value="24.10.2022">
-                                <label for="date-24.10.2022"> <?php echo $d->modify('+1day')->format('d.m.Y'); ?></label>
+                                <input id="date-24.10.2022" type="radio" name="date_res" value="<?php echo $d->modify('+1day')->format('d.m.Y'); ?>">
+                                <label for="date-24.10.2022"> <?php echo $d->format('d.m.Y'); ?></label>
                             </div>
                             <div class="row_schedule_btn">
-                                <input id="date-25.10.2022" type="radio" name="date" value="25.10.2022">
-                                <label for="date-25.10.2022"> <?php echo $d->modify('+1day')->format('d.m.Y'); ?></label>
+                                <input id="date-25.10.2022" type="radio" name="date_res" value="<?php echo $d->modify('+1day')->format('d.m.Y'); ?>">
+                                <label for="date-25.10.2022"> <?php echo $d->format('d.m.Y'); ?></label>
                             </div>
                         </div>
                 </div>
                 <div class="doctor_info">
                     <h12>Время приёма</h12>
                     <div class="row_schedule">
-                    <?php
+                    
+                        <?php
                         foreach ($time as $times) {?>
                         <div class="row_schedule_btn">
                             <input id="time-<?php echo $times['time'];  ?>" type="radio" name="time_reception" value="<?php echo $times['time'];  ?>">
-                            <label for="time-<?php echo $times['time'];  ?>" name="time_reception"><?php echo $times['time'];  ?></label>
+                            <label for="time-<?php echo $times['time'];  ?>" ><?php echo $times['time'];  ?></label>
                         </div>
                     <?php } ?>
                     </div>

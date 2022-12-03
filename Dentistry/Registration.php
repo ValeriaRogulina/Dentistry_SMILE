@@ -1,7 +1,7 @@
 <?php 
 $db="my_dentistry";
 session_start();
-$connection = mysqli_connect("localhost", "root", "Vepfngs.ru1", $db);
+$connection = mysqli_connect("localhost", "root", "12345", $db);
 if(isset($_POST["submit"])){
     
     if(!empty($_POST['surname']) && !empty($_POST['name']) && !empty($_POST['patronymic']) && !empty($_POST['login']) && !empty($_POST['password'])) {
@@ -43,17 +43,17 @@ if($numrows==0)
     <link href="https://fonts.googleapis.com/css?family=Italiana|Montserrat:400,700&amp;subset=cyrillic-ext" rel="stylesheet">
     <!-- Bootstrap CSS -->
     <link>
-    <link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
-    <!-- Bootstrap сетка -->
-    <link rel="stylesheet" href="libs/bootstrap-grid.min.css">
+	<link rel="stylesheet" href="libs/bootstrap-reboot.min.css">
+	<!-- Bootstrap сетка -->
+	<link rel="stylesheet" href="libs/bootstrap-grid.min.css">
     <!-- Стили сайта -->
-    <link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/styles.css">
     <title>Dentistry</title>
 </head>
     <body>
 <header>
     <div class="logo">
-        <a href="/Dentistry.php">
+        <a href="/Profile.php">
         <img src="/assets/images/logo.jpg" width="350" height="80px"/>
         </a>
     </div>

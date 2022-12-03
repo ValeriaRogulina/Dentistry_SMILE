@@ -1,15 +1,26 @@
 <?php 
 require 'db.php'; 
 session_start();
+
 if(!isset($_SESSION['id'])):
 header("location:Authorization.php");
 else:
 ?>
 <?php endif; 
-$name_patient=$_SESSION['id'];
+$name_patient=$_SESSION['session_name'];
 $query =$connection->query("SELECT * FROM reception WHERE name_patient='".$name_patient."'");
-$sql1 = mysqli_query($connection, 'SELECT * FROM `appointment` WHERE idpatient="'.$_SESSION['id'].'"');
 $sql2 = mysqli_query($connection, 'SELECT * FROM `doctor`');
+
+if (isset($_GET['del'])) { //проверяем, есть ли переменная
+    //удаляем строку из таблицы
+    $sql = mysqli_query($connection, "DELETE FROM reception WHERE `id_reception` = {$_GET['del']}");
+    header('Location: Med_card.php');
+    if ($sql) {
+      echo "<p>Запись удалена.</p>";
+    } else {
+      echo '<p>Произошла ошибка: ' . mysqli_error($connection) . '</p>';
+    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="ru">
@@ -74,7 +85,7 @@ $sql2 = mysqli_query($connection, 'SELECT * FROM `doctor`');
                                     <div class="line"></div>
                                     <div class = "part">
                                         <img src="/assets/images/calendar.png" width="25" height="25px"/>
-                                        <p>Дата приёма: <?php echo "{$row['date']}";?></p>
+                                        <p>Дата приёма: <?php echo "{$row['date_res']}";?></p>
                                     </div>
                                     <div class = "part">
                                         <img src="/assets/images/clock.png" width="25" height="25px"/>
@@ -84,7 +95,9 @@ $sql2 = mysqli_query($connection, 'SELECT * FROM `doctor`');
                                         <img src="/assets/images/doc.png" width="25" height="25px"/>
                                         <p>Лечащий врач: <?php echo "{$row['doctor']}";?></p>
                                     </div>
-                                    
+                                    <?php
+        echo
+        "<a href='?del={$row['id_reception']}' >Удалить</a>";?>
                                     <div class="line"></div>
                                     
                                 </div>

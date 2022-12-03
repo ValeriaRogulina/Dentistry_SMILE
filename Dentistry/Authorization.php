@@ -1,3 +1,43 @@
+<?php
+    require 'db.php';
+    session_start();
+    if(isset($_SESSION["session_name"])){
+    echo "Session is set"; // в целях проверки
+    header("Location: Dentistry.php");
+    }
+
+    if(isset($_POST["sub"])){
+
+    if(!empty($_POST['login']) && !empty($_POST['password'])) {
+    $login=htmlspecialchars($_POST['login']);
+    $password=htmlspecialchars($_POST['password']);
+    $query =$connection->query("SELECT * FROM patient WHERE login='".$login."' AND password='".$password."'");
+    $numrows=mysqli_num_rows($query);
+    if($numrows!=0)
+ {
+while($row=mysqli_fetch_assoc($query))
+ {
+    $dbusername=$row['login'];
+  $dbpassword=$row['password'];
+ }
+  if($login == $dbusername && $password == $dbpassword)
+ {
+    // старое место расположения
+    //  session_start();
+     $_SESSION['session_name']=$login;   
+ /* Перенаправление браузера */
+   header("Location: Dentistry.php");
+    }
+    } else {
+    //  $message = "Invalid username or password!";
+    
+    echo  "Неправильный логин и пароль!";
+ }
+    } else {
+    $message = "Не заполнены все поля!";
+    }
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -43,14 +83,14 @@
         <div class="authorization">
         <img src="assets/images/user.png">
         <h6>Вход в личный кабинет</h6>
-            <form action="signin.php" method="POST">
+            <form action="" method="POST">
                 <div class="form-input">
                     <input type="text" name="login" placeholder="Логин">
                     <input type="password" name="password" placeholder="Пароль">
                     <br/>
-                    <a href="Registration.php">Нет аккаунта? Зарегистрируйтесь.</a><br/><br/>
-                    <input class="form-submit" type="submit" name="submit" value="Войти">
+                    <input class="form-submit" type="submit" name="sub" value="Войти">
                 </div>
+                <span class="tooltip" data-tooltip="Для получения доступа к личному кабинету или восстановления пароля обратитесь на регистратуру">i</span>
             </form>
         </div>
     </div>

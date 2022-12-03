@@ -1,11 +1,17 @@
 <?php  
 require 'db.php'; 
 session_start();
+if(!isset($_SESSION["session_name"])):
+header("location:Authorization.php");
+else:
 ?>
+<?php endif; ?>
+
 <?php
+    $name_patient=$_SESSION['id'];
     $sql1 = mysqli_query($connection, 'SELECT * FROM `patient` WHERE idpatient="'.$_SESSION['id'].'"');
     $result1 = mysqli_fetch_assoc($sql1);
-    $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_patient="'.$_SESSION['id'].'"');
+    $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_data="'.$_SESSION['id'].'"');
     $result2 = mysqli_fetch_assoc($sql2);
 ?>
 <!DOCTYPE html>
@@ -43,7 +49,7 @@ session_start();
         <a href="#">Обратный звонок</a>
     </div>
     <div class="lk">
-        <a href="/Profile.php">
+        <a href="#">
         <img src="/assets/images/lk.png" width="50" height="50px"/>
         </a>
     </div>                                                        

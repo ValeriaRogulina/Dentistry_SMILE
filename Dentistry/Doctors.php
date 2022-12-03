@@ -1,5 +1,11 @@
 <?php require 'db.php'; 
 session_start();
+if(!isset($_SESSION["session_name"])):
+header("location:Authorization.php");
+else:
+?>
+<?php endif; ?>
+<?php
 $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');?>
 
 <!DOCTYPE html>
@@ -37,7 +43,7 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');?>
         <a href="#">Обратный звонок</a>
     </div>
     <div class="lk">
-        <a href="/Authorization.php">
+        <a href="/Profile.php">
         <img src="/assets/images/lk.png" width="50" height="50px"/>
         </a>
     </div>                                                        

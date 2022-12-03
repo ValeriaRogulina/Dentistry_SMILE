@@ -72,7 +72,7 @@ session_start();
                 <a href="Profile.php" id='submit' name='submit' input type='submit'>Сохранить</a>
            </div>     
            <?php          
-              $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_data="'.$_SESSION['id'].'"');
+              $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_patient="'.$_SESSION['id'].'"');
             $row = mysqli_fetch_array($sql2); 
             ?>     
                         <div class="person_info">
@@ -98,7 +98,7 @@ $POLIS=$_POST['POLIS'];
 $passport=$_POST['passport'];
 $SNILS=$_POST['SNILS'];
 
-$update_sql = "UPDATE personal data SET gender='$gender', birthday='$birthday', phone='$phone', address='$address', diseases='$diseases', passport='$passport', POLIS='$POLIS', SNILS='$SNILS' WHERE id_data = '$id_data';" ;
+$update_sql = "UPDATE personal data SET gender='$gender', birthday='$birthday', phone='$phone', address='$address', diseases='$diseases', passport='$passport', POLIS='$POLIS', SNILS='$SNILS' WHERE id_data = '$id_data'" ;
 mysqli_query($update_sql) or die("Ошибка вставки" . mysqli_error());
 echo '<p>Запись успешно обновлена!</p>';
 }
