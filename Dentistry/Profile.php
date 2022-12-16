@@ -10,7 +10,7 @@ else:
 <?php
     $sql1 = mysqli_query($connection, 'SELECT * FROM `patient` WHERE login="'.$_SESSION['session_name'].'"');
     $result1 = mysqli_fetch_assoc($sql1);
-    $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_patient="'.$_SESSION['session_name'].'"');
+    $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_data="'.$_SESSION['session_name'].'"');
     $result2 = mysqli_fetch_assoc($sql2);
 ?>
 <!DOCTYPE html>
