@@ -1,10 +1,6 @@
 <?php require 'db.php'; 
 session_start();
-if(!isset($_SESSION["session_name"])):
-header("location:Authorization.php");
-else:
-?>
-<?php endif; ?>
+ ?>
 
 <!DOCTYPE html>
 <html lang="ru">

@@ -2,7 +2,7 @@
     require 'db.php';
     session_start();
     if(isset($_SESSION["session_name"])){
-    echo "Session is set"; // в целях проверки
+    
     header("Location: Dentistry.php");
     }
 

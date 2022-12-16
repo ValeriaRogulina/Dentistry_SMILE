@@ -8,10 +8,9 @@ else:
 <?php endif; ?>
 
 <?php
-    $name_patient=$_SESSION['id'];
-    $sql1 = mysqli_query($connection, 'SELECT * FROM `patient` WHERE idpatient="'.$_SESSION['id'].'"');
+    $sql1 = mysqli_query($connection, 'SELECT * FROM `patient` WHERE login="'.$_SESSION['session_name'].'"');
     $result1 = mysqli_fetch_assoc($sql1);
-    $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_data="'.$_SESSION['id'].'"');
+    $sql2 = mysqli_query($connection, 'SELECT * FROM `personal data` WHERE id_patient="'.$_SESSION['session_name'].'"');
     $result2 = mysqli_fetch_assoc($sql2);
 ?>
 <!DOCTYPE html>

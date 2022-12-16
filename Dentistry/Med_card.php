@@ -2,11 +2,7 @@
 require 'db.php'; 
 session_start();
 
-if(!isset($_SESSION['id'])):
-header("location:Authorization.php");
-else:
-?>
-<?php endif; 
+
 $name_patient=$_SESSION['session_name'];
 $query =$connection->query("SELECT * FROM reception WHERE name_patient='".$name_patient."'");
 $sql2 = mysqli_query($connection, 'SELECT * FROM `doctor`');

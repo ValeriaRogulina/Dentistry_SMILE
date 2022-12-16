@@ -1,10 +1,6 @@
 <?php require 'db.php'; 
 session_start();
-if(!isset($_SESSION["session_name"])):
-header("location:Authorization.php");
-else:
-?>
-<?php endif; ?>
+ ?>
 <?php
 $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');?>
 
