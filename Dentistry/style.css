@@ -247,6 +247,54 @@ footer h4 {
     padding-right: 100px;
 }
 
+.prices_container {
+    margin-top: 130px; 
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.doctor_container{
+    margin-top: 130px; 
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.dis_container {
+    margin-top: 130px; 
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.contact_container {
+    margin-top: 130px; 
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.auth_container {
+    margin-top: 130px; 
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
+.reg_container {
+    margin-top: 130px; 
+    padding-top: 20px;
+    padding-bottom: 40px;
+    padding-left: 100px;
+    padding-right: 100px;
+}
+
 .prices {
     background-color: rgba(251, 251, 251, 1);
     box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
@@ -447,6 +495,7 @@ h7 {
 }
 
 .private_office {
+    margin-top: 130px;
     display: inline-flex;
     box-sizing: border-box;
     padding: 30px 45px;

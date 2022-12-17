@@ -43,7 +43,7 @@ session_start();
     </div>                                                             
     </header>
     <main>
-        <section class="container">
+        <section class="contact_container">
             <div class="prices_title">
                 <h2>Контакты</h2>
             </div>

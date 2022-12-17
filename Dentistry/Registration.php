@@ -1,7 +1,5 @@
 <?php 
-$db="my_dentistry";
-session_start();
-$connection = mysqli_connect("localhost", "root", "12345", $db);
+require 'db.php';
 if(isset($_POST["submit"])){
     
     if(!empty($_POST['surname']) && !empty($_POST['name']) && !empty($_POST['patronymic']) && !empty($_POST['login']) && !empty($_POST['password'])) {
@@ -76,7 +74,7 @@ if($numrows==0)
     </div>                                                        
 </header>
     <main>
-    <div class="container">
+    <div class="reg_container">
         <div class="registration">
         <img src="assets/images/adduser.png">
         <h6>Регистрация</h6>

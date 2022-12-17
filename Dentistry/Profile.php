@@ -53,7 +53,6 @@ else:
         </a>
     </div>                                                        
     </header>
-    
     <main>
         <div class="private_office">
             <div class="leftside_bar">

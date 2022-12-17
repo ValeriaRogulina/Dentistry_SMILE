@@ -44,9 +44,8 @@ $sql = mysqli_query($connection, 'SELECT * FROM `doctor`');?>
         </a>
     </div>                                                        
     </header>
-    
     <main>
-        <div class="container">
+        <div class="doctor_container">
             <div class="prices_title">
                 <h2>Наши врачи</h2>
             </div>

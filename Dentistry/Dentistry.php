@@ -1,6 +1,6 @@
 <?php require 'db.php'; 
 session_start();
- ?>
+?>
 
 <!DOCTYPE html>
 <html lang="ru">
@@ -16,7 +16,7 @@ session_start();
     <title>Dentistry</title>
 </head>
 <body>
-    <header>
+    <header class="header">
     <div class="logo">
         <a href="/Dentistry.php">
         <img src="/assets/images/logo.jpg" width="350" height="80px"/>
@@ -118,6 +118,8 @@ session_start();
             <h3>ООО «SMILE», ИНН 1234567891</h3>
             <h4>© 2022</h4>
         </a>
-    </footer>  
+    </footer>
+    <script type="text/javascript" src = "scripts/jquery-3.6.1.min.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>

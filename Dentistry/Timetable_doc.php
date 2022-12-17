@@ -74,7 +74,7 @@ if(isset($_POST["zapis"])){
     </div>                                                        
     </header>
     <main>
-        <div class="container">
+        <div class="doc_container">
             <div class="prices_title">
                 <h2>Запись к врачу онлайн</h2>
             </div>

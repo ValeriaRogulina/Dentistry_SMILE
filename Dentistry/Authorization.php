@@ -3,10 +3,10 @@
     session_start();
     if(isset($_SESSION["session_name"])){
     
-    header("Location: Dentistry.php");
+    header("Location: Profile.php");
     }
 
-    if(isset($_POST["sub"])){
+    if(isset($_POST["submit"])){
 
     if(!empty($_POST['login']) && !empty($_POST['password'])) {
     $login=htmlspecialchars($_POST['login']);
@@ -79,7 +79,7 @@ while($row=mysqli_fetch_assoc($query))
     </div>                                                        
 </header>
     <main>
-    <div class="container">
+    <div class="auth_container">
         <div class="authorization">
         <img src="assets/images/user.png">
         <h6>Вход в личный кабинет</h6>
@@ -88,9 +88,9 @@ while($row=mysqli_fetch_assoc($query))
                     <input type="text" name="login" placeholder="Логин">
                     <input type="password" name="password" placeholder="Пароль">
                     <br/>
-                    <input class="form-submit" type="submit" name="sub" value="Войти">
+                    <a href="Registration.php">Нет аккаунта? Зарегистрируйтесь.</a><br/><br/>
+                    <input class="form-submit" type="submit" name="submit" value="Войти">
                 </div>
-                <span class="tooltip" data-tooltip="Для получения доступа к личному кабинету или восстановления пароля обратитесь на регистратуру">i</span>
             </form>
         </div>
     </div>

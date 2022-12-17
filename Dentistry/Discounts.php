@@ -42,7 +42,7 @@ session_start();
     </div>                                                             
     </header>
     <main>
-        <section class="container">
+        <section class="dis_container">
             <h2>Акции</h2>
                 <a href="/">
                 <IMG class="sale" src="/assets/images/sale_2.jpg"/>

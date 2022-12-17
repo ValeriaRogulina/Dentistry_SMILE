@@ -1,6 +1,6 @@
 <?php require 'db.php'; 
 session_start();
- ?>
+?>
 <!DOCTYPE html>
 <html lang="ru">
 <head>
@@ -42,7 +42,7 @@ session_start();
     </div>                                                             
     </header>
     <main>
-        <section class="container">
+        <section class="prices_container">
             <div class="prices_title">
                 <h2>Услуги и цены</h2>
             </div>
@@ -114,8 +114,6 @@ session_start();
                 </a>
                 <?php }?>
             </div>   
-           
- 
         </section>
     </main>
     <footer>
